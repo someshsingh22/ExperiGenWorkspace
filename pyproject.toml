@@ -1,0 +1,15 @@
+[project]
+name = "experigen-workspace"
+version = "0.1.0"
+description = "Data analysis environment for the OpenCode analyst agent"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas",
+    "numpy",
+    "scipy",
+    "statsmodels",
+    "scikit-learn",
+    "matplotlib",
+    "seaborn",
+    "textstat>=0.7.13",
+]

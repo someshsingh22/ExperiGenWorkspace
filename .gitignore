@@ -1,0 +1,4 @@
+*
+!.gitignore
+!pyproject.toml
+!uv.lock

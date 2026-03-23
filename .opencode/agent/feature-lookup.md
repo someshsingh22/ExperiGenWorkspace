@@ -7,8 +7,8 @@ tools:
   read: true
   write: false
   edit: false
-  grep: false
-  glob: false
+  grep: true
+  glob: true
   feature_extractor: false
 ---
 

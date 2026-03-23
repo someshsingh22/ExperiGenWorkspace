@@ -8,7 +8,8 @@ export default tool({
         top_k: tool.schema.number().optional().describe("Number of similar features to return (default: 3)")
     },
     async execute(args, context) {
-        const script = path.join(context.worktree, "experigen/algorithm/tools/feature_search_cli.py")
+        const experigenRoot = "/dev/shm/somesh/experigen"
+        const script = path.join(experigenRoot, "experigen/algorithm/tools/feature_search_cli.py")
         const csv_path = process.env.EXPERIGEN_CSV_PATH
         const top_k = args.top_k ?? 3
 
@@ -17,7 +18,7 @@ export default tool({
         const execPromise = util.promisify(exec)
 
         const python = process.env.EXPERIGEN_SYSTEM_PYTHON || "python3"
-        const command = `PYTHONPATH=${context.worktree} ${python} ${script} --csv_path "${csv_path}" --query "${args.query}" --top_k ${top_k}`
+        const command = `PYTHONPATH=${experigenRoot} ${python} ${script} --csv_path "${csv_path}" --query "${args.query}" --top_k ${top_k}`
 
         try {
             const { stdout } = await execPromise(command, { timeout: 30000 })

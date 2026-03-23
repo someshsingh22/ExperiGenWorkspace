@@ -12,7 +12,8 @@ export default tool({
     },
     async execute(args, context) {
         const typesJson = JSON.stringify(args.types)
-        const script = path.join(context.worktree, "experigen/algorithm/tools/feature_extractor_cli.py")
+        const experigenRoot = "/dev/shm/somesh/experigen"
+        const script = path.join(experigenRoot, "experigen/algorithm/tools/feature_extractor_cli.py")
         const csv_path = process.env.EXPERIGEN_CSV_PATH
         // Using Node.js child_process.exec since Bun is not available
         const { exec } = await import("child_process")
@@ -20,7 +21,7 @@ export default tool({
         const execPromise = util.promisify(exec)
 
         const python = process.env.EXPERIGEN_SYSTEM_PYTHON || "python3"
-        const command = `PYTHONPATH=${context.worktree} ${python} ${script} --csv_path "${csv_path}" --data_column "${args.data_column}" --target_column "${args.target_column}" --feature "${args.feature}" --types '${typesJson}' --description "${args.description}"`
+        const command = `PYTHONPATH=${experigenRoot} ${python} ${script} --csv_path "${csv_path}" --data_column "${args.data_column}" --target_column "${args.target_column}" --feature "${args.feature}" --types '${typesJson}' --description "${args.description}"`
 
         try {
             const { stdout } = await execPromise(command)

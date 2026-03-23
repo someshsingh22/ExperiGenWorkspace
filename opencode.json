@@ -26,7 +26,7 @@
         "azure-anthropic": {
             "name": "Azure AI Foundry (Anthropic)",
             "npm": "@ai-sdk/anthropic",
-            "api": "https://{env:ANTHROPIC_FOUNDRY_RESOURCE}.services.ai.azure.com/anthropic/v1",
+            "api": "https://mdsr-foundry-resource.services.ai.azure.com/anthropic/v1",
             "env": ["AZURE_API_KEY"],
             "models": {
                 "claude-sonnet-4-5": {

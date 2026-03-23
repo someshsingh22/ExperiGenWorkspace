@@ -7,6 +7,21 @@
         "websearch": "deny",
         "external_directory": "deny"
     },
+    "agent": {
+        "build": {
+            "mode": "primary",
+            "tools": {
+                "write": true,
+                "edit": true,
+                "bash": true,
+                "read": true,
+                "grep": true,
+                "glob": true,
+                "feature_extractor": true,
+                "feature_search": false
+            }
+        }
+    },
     "provider": {
         "azure-anthropic": {
             "name": "Azure AI Foundry (Anthropic)",

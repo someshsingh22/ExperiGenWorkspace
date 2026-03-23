@@ -12,16 +12,21 @@ export default tool({
     },
     async execute(args, context) {
         const typesJson = JSON.stringify(args.types)
-        const experigenRoot = "/dev/shm/somesh/experigen"
+        const experigenRoot = path.dirname(context.worktree)
         const script = path.join(experigenRoot, "experigen/algorithm/tools/feature_extractor_cli.py")
         const csv_path = process.env.EXPERIGEN_CSV_PATH
-        // Using Node.js child_process.exec since Bun is not available
+        const model = process.env.EXPERIGEN_JUDGE_MODEL
+        const api_base = process.env.EXPERIGEN_API_BASE
+        const task_type = process.env.EXPERIGEN_TASK_TYPE
+
         const { exec } = await import("child_process")
         const util = await import("util")
         const execPromise = util.promisify(exec)
 
         const python = process.env.EXPERIGEN_SYSTEM_PYTHON || "python3"
-        const command = `PYTHONPATH=${experigenRoot} ${python} ${script} --csv_path "${csv_path}" --data_column "${args.data_column}" --target_column "${args.target_column}" --feature "${args.feature}" --types '${typesJson}' --description "${args.description}"`
+
+        const api_base_arg = (api_base && api_base.length > 0) ? `--api_base "${api_base}"` : ""
+        const command = `PYTHONPATH=${experigenRoot} ${python} ${script} --csv_path "${csv_path}" --data_column "${args.data_column}" --target_column "${args.target_column}" --feature "${args.feature}" --types '${typesJson}' --description "${args.description}" --model "${model}" --task_type "${task_type}" ${api_base_arg}`.trimEnd()
 
         try {
             const { stdout } = await execPromise(command)

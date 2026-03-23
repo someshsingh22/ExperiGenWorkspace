@@ -8,7 +8,7 @@ export default tool({
         top_k: tool.schema.number().optional().describe("Number of similar features to return (default: 3)")
     },
     async execute(args, context) {
-        const experigenRoot = "/dev/shm/somesh/experigen"
+        const experigenRoot = path.dirname(context.worktree)
         const script = path.join(experigenRoot, "experigen/algorithm/tools/feature_search_cli.py")
         const csv_path = process.env.EXPERIGEN_CSV_PATH
         const top_k = args.top_k ?? 3

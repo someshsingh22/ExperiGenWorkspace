@@ -8,6 +8,42 @@
         "external_directory": "deny"
     },
     "provider": {
+        "azure-anthropic": {
+            "name": "Azure AI Foundry (Anthropic)",
+            "npm": "@ai-sdk/anthropic",
+            "api": "https://{env:ANTHROPIC_FOUNDRY_RESOURCE}.services.ai.azure.com/anthropic/v1",
+            "env": ["AZURE_API_KEY"],
+            "models": {
+                "claude-sonnet-4-5": {
+                    "id": "claude-sonnet-4-5",
+                    "name": "Claude Sonnet 4.5",
+                    "tool_call": true,
+                    "attachment": true,
+                    "reasoning": true,
+                    "temperature": true,
+                    "options": {
+                        "thinking": {
+                            "type": "enabled",
+                            "budgetTokens": 16000
+                        }
+                    }
+                },
+                "claude-haiku-4-5": {
+                    "id": "claude-haiku-4-5",
+                    "name": "Claude Haiku 4.5",
+                    "tool_call": true,
+                    "attachment": true,
+                    "reasoning": true,
+                    "temperature": true,
+                    "options": {
+                        "thinking": {
+                            "type": "enabled",
+                            "budgetTokens": 16000
+                        }
+                    }
+                }
+            }
+        },
         "ollama": {
             "npm": "@ai-sdk/openai-compatible",
             "name": "Ollama",

@@ -1,6 +1,7 @@
 ---
 model: azure-anthropic/claude-haiku-4-5
 temperature: 0.0
+mode: subagent
 tools:
   feature_search: true
   bash: true

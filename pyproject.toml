@@ -12,4 +12,6 @@ dependencies = [
     "matplotlib",
     "seaborn",
     "textstat>=0.7.13",
+    "scanpy>=1.11.5",
+    "anndata>=0.11.4",
 ]

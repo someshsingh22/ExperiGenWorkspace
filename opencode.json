@@ -17,7 +17,7 @@
                 "read": true,
                 "grep": true,
                 "glob": true,
-                "feature_extractor": true,
+                "feature_extractor": false,
                 "feature_search": false
             }
         }

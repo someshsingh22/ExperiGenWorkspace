@@ -8,6 +8,9 @@
         "external_directory": "deny"
     },
     "agent": {
+        "feature-lookup": {
+            "model": "{env:EXPERIGEN_FEATURE_LOOKUP_MODEL}"
+        },
         "build": {
             "mode": "primary",
             "tools": {

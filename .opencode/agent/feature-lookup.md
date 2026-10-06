@@ -1,5 +1,4 @@
 ---
-model: azure-anthropic/claude-haiku-4-5
 temperature: 0.0
 mode: subagent
 tools:
@@ -17,6 +16,7 @@ You are a fast feature-lookup assistant. Given a query, report ALL columns in th
 
 ## Environment
 
+- Model: selected by `EXPERIGEN_FEATURE_LOOKUP_MODEL` (`provider/model`) through the workspace's `opencode.json`.
 - Working CSV: available via the `EXPERIGEN_CSV_PATH` environment variable.
 
 ## Two kinds of features

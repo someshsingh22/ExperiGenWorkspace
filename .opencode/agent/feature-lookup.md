@@ -16,7 +16,7 @@ You are a fast feature-lookup assistant. Given a query, report ALL columns in th
 
 ## Environment
 
-- Model: selected by `EXPERIGEN_FEATURE_LOOKUP_MODEL` (`provider/model`) through the workspace's `opencode.json`.
+- Model: inherits `EXPERIGEN_ANALYST_MODEL` (`provider/model`) through the workspace's `opencode.json`.
 - Working CSV: available via the `EXPERIGEN_CSV_PATH` environment variable.
 
 ## Two kinds of features
